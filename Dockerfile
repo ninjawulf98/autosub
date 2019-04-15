@@ -6,7 +6,7 @@ COPY file:27a6b1f2b3b182a99e0aa80e87d6c0f5b879159b5fec70eddf5db8254cb16e2e in /e
 ENV BUILD_PACKAGES=build-base BUILD_PACKAGES=linux-headers BUILD_PACKAGES=python2-dev
 ENTRYPOINT ["/usr/bin/dumb-init" "bash" "/entrypoint.sh"]
 LABEL maintainer=bamischijf
-WORKDIR=/opt/autosub-master
+WORKDIR /opt/autosub-master
 RUN apk update && apk add gcc python-dev musl-dev && wget https://github.com/BenjV/autosub/archive/master.zip && unzip master.zip -d /opt && rm master.zip && easy_install Cheetah && apk del gcc python-dev musl-dev
 CMD ["python" "AutoSub.py"]
 EXPOSE 9960/tcp 
