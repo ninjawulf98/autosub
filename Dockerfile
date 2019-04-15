@@ -1,4 +1,4 @@
-FROM jfloff/alpine-python:2.7-slim
+FROM jfloff/alpine-python:latest-slim
 MAINTAINER bamischijf
 
 WORKDIR /opt/autosub-master/
