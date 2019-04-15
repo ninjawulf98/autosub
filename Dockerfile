@@ -2,7 +2,7 @@ ADD file:093f0723fa46f6cdbd6f7bd146448bb70ecce54254c35701feeceb956414622f in /
 CMD ["/bin/sh"]
 RUN echo && echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" > /etc/apk/repositories && echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories && echo "http://dl-cdn.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories && apk add --no-cache dumb-init bash ca-certificates python2 py-setuptools || (sed -i -e 's/dl-cdn/dl-4/g' /etc/apk/repositories && apk add --no-cache dumb-init bash ca-certificates python2 py-setuptools) && echo "http://dl-cdn.alpinelinux.org/alpine/v3.7/main/" > /etc/apk/repositories && if [[ ! -e /usr/bin/python ]]; then ln -sf /usr/bin/python2.7 /usr/bin/python; fi && if [[ ! -e /usr/bin/python-config ]]; then ln -sf /usr/bin/python2.7-config /usr/bin/python-config; fi && if [[ ! -e /usr/bin/easy_install ]]; then ln -sf /usr/bin/easy_install-2.7 /usr/bin/easy_install; fi && easy_install pip && pip install --upgrade pip && if [[ ! -e /usr/bin/pip ]]; then ln -sf /usr/bin/pip2.7 /usr/bin/pip; fi && echo
 COPY file:27a6b1f2b3b182a99e0aa80e87d6c0f5b879159b5fec70eddf5db8254cb16e2e in /entrypoint.sh
-ENV BUILD_PACKAGES=build-base BUILD_PACKAGES=linux-headers BUILD_PACKAGES=python2-dev
+ENV BUILD_PACKAGES=build-base BUILD_PACKAGES=linux-headers BUILD_PACKAGES=python2
 ENTRYPOINT ["/usr/bin/dumb-init" "bash" "/entrypoint.sh"]
 LABEL maintainer=bamischijf
 WORKDIR=/opt/autosub-master
