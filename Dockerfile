@@ -8,5 +8,5 @@ RUN unzip master.zip -d /opt
 RUN rm master.zip 
 RUN pip install Cheetah six
 
-CMD ["python", "AutoSub.py", "--config=opt/config/config.properties"]
+CMD ["python", "AutoSub.py", "--config=/opt/config/config.properties"]
 EXPOSE 9960
